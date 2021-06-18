@@ -1,0 +1,17 @@
+{% extends "main/header.html" %}
+{% block content %}
+    <div class="row">
+        {% for i in info%}
+            <div class="col s12 m6 14">
+                <div class="card blue darken-4">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{i.name}}</span> 
+                        <p>{{i.name}}</p>
+                        <p>{{i.date}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+      

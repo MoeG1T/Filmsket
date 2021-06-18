@@ -1,0 +1,37 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+    <div class="row">
+    <form method="post" action="#">
+    {%csrf_token%}
+    <button type="submit", name="Save", value="Save"><a class="waves-effect waves-light btn red"><i class="material-icons left">check</i>Save Basket</a></button>
+        {% for f in films %}
+            <div class="col9999 s12 m6 l4">
+                <a href="{{partone}}", style="color:#000">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title">{{f.name}}</div>
+                            {% if f.done == True%}
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in", value="clicked", name="c{{f.id}}" checked="checked"/>
+                                    <span>Done Watching</span>
+                                </label>
+                            </p>
+                            {% else %}
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in", value="clicked", name="c{{f.id}}" />
+                                    <span>Done Watching</span>
+                                </label>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="submit", name="NewFilm", value="NewFilm"><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a></button>
+    </form>
+{% endblock %}
