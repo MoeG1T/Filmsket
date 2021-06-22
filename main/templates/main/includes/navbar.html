@@ -1,10 +1,10 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Filmsket</span></a>
+        <a href="/" class="brand-logo ">Filmsket</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
             {% if user.is_authenticated %}
-                <li><a href="/account">{{user.username}}</a></li>
+                <li><a>{{user.username}}</a></li>
                 <li><a href="/logout">Logout</a></li>
             {% else %}
                 <li><a href="/register">Register</a></li>
@@ -13,3 +13,8 @@
         </ul>
     </div>
 </nav>
+
+
+
+    
+  

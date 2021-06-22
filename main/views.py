@@ -1,11 +1,30 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Film, Basket
+from .models import Film, Basket, Result
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import NewUserForm, CreateNewBasket
 # Create your views here.
+
+def search_results(request, id):
+    if request.method=="POST":
+        
+        if request.POST.get("Add"):
+            results = Result.objects.filter(Num=id)
+            search_result = results[len(results) - 1 ]
+            
+            basket = Basket.objects.get(id=id)
+            basket.film_set.create(name=search_result.result)
+            Result.objects.all().delete()
+            
+            return redirect("main:homepage")
+        
+        search = request.POST.get('search')
+        r = Result(result=search, Num=id)
+        r.save()
+        
+        return render(request, "main/search_results.html", {"search":search, "id":id})
 
 def create(request):
     if request.method == "POST":
@@ -15,6 +34,7 @@ def create(request):
             new_basket = form.cleaned_data["name"]
             c = Basket(BasketGenre=new_basket)
             c.save()
+            request.user.basket.add(c)
             messages.success(request, f"New Film Basket Made: {new_basket}")
             return redirect("main:homepage")
     
@@ -22,30 +42,34 @@ def create(request):
     return render(request, "main/create.html", {"form":form})
 
     
-def index(request, id):
+def index(request, id): 
     baskets = Basket.objects.get(id=id)
     films = baskets.film_set.all()
+    
+    if not request.user.is_anonymous:
+        if baskets in request.user.basket.all():
+            
+            if request.method=="POST":   
+                if request.POST.get("Save"):
+                    for i in films:
+                        if request.POST.get("c" + str(i.id)) == "clicked":
+                            i.done = True
+                        else:
+                            i.done = False
+                        i.save()
+                    return render(request, "main/basket.html", {"films":films , "id":id}) 
 
-    if request.method=="POST":
-        
-        if request.POST.get("NewFilm"):
-            pass
-        
-        elif request.POST.get("Save"):
-            for i in films:
-                if request.POST.get("c" + str(i.id)) == "clicked":
-                    i.done = True
-                else:
-                    i.done = False
-                i.save()
-            return render(request, "main/basket.html", {"films":films})
-        
-    return render(request, "main/basket.html", {"films":films})
+            return render(request, "main/basket.html", {"films":films, "id":id})
+
+        return render(request,"main/baskets.html",{})
+    else:
+        return redirect("main:homepage")
+    
 
 def homepage(request):
-    return render(request=request, 
-                  template_name="main/baskets.html", 
-                  context={"Baskets":Basket.objects.all()})
+    return render(request, 
+                  "main/baskets.html", 
+                  {})
 
 def register(request):
     if request.method == "POST":

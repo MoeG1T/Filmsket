@@ -17,7 +17,5 @@ class NewUserForm(UserCreationForm):
         return user
 
 class CreateNewBasket(forms.Form):
-    name = forms.CharField(label="Name", max_length=200)
+    name = forms.CharField(label="Basket Name", max_length=200)
 
-class AddNewFilm(forms.Form):
-    title = forms.CharField(label="Name", max_length=200)

@@ -1,10 +1,25 @@
 {% extends 'main/header.html' %}
 
 {% block content %}
+
+    <p>
+    <nav>
+        <div class="nav-wrapper">
+        <form method="post" action="{% url 'main:search_results' id%}">
+        {%csrf_token%}
+            <div class="input-field">
+                <input id="search" type="search" placeholder="Search Film" name="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+        </div>
+    </nav>
+    </p>
+    
     <div class="row">
     <form method="post" action="#">
     {%csrf_token%}
-    <button type="submit", name="Save", value="Save"><a class="waves-effect waves-light btn red"><i class="material-icons left">check</i>Save Basket</a></button>
         {% for f in films %}
             <div class="col9999 s12 m6 l4">
                 <a href="{{partone}}", style="color:#000">
@@ -31,7 +46,7 @@
                 </a>
             </div>
         {% endfor %}
+        <button type="submit", name="Save", value="Save"><a class="waves-effect waves-light btn red"><i class="material-icons left">check</i>Save Basket</a></button>
     </div>
-    <button type="submit", name="NewFilm", value="NewFilm"><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a></button>
     </form>
 {% endblock %}

@@ -5,7 +5,6 @@ from .models import Film, Basket
 class InfoAdmin(admin.ModelAdmin):
     fieldsets = [
         ("User Info:", {"fields": ["name","date","done"]}),
-        ("URL:", {"fields": ["film_slug"]}),
         ("Films:", {"fields": ["BasketGenre"]}),
     ]
     
