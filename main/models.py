@@ -15,9 +15,9 @@ class Basket(models.Model):
         return self.BasketGenre
 
 class Film(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField("date created", default=datetime.now())
-    done = models.BooleanField(default=False)
+    summary = models.CharField(max_length=900, null=True)
+    poster = models.CharField(max_length=900)
+    url = models.CharField(max_length=200)
     
     BasketGenre = models.ForeignKey(Basket, default=1, verbose_name="basket", on_delete=models.SET_DEFAULT)
     
@@ -25,5 +25,7 @@ class Film(models.Model):
         return self.name
 
 class Result(models.Model):
-    result = models.CharField(max_length=200)
+    result = models.CharField(max_length=900)
+    url= models.CharField(max_length=200)
     Num = models.IntegerField()
+    poster = models.CharField(max_length=900)

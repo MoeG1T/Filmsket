@@ -3,16 +3,21 @@
 <form method="post">
 {%csrf_token%}
     <div class="row">
-    {% if search %}
-            <div class="col s12 m6 14">
-                <div class="card blue darken-4">
-                    <div class="card-content white-text">
-                        <span class="card-title">{{ search }}</span> 
-                    </div>
-                </div>
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="video-container">
+                <iframe width="853" height="480" src={{result.url}} frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="card-content">
+            {% for s in summary %}
+                <ul>
+                    <li> {{s}} </li>
+                </ul>
+            {% endfor %}
             </div>
             <button type="submit", name="Add", value="Add"><a class="waves-effect waves-light btn red"><i class="material-icons left">add</i>Add Film</a></button>
-    {% endif %}
+        </div>
+    </div>
     </div>
 </form>
 {% endblock %}

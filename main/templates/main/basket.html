@@ -20,33 +20,18 @@
     <div class="row">
     <form method="post" action="#">
     {%csrf_token%}
-        {% for f in films %}
-            <div class="col9999 s12 m6 l4">
-                <a href="{{partone}}", style="color:#000">
-                    <div class="card hoverable">
-                        <div class="card-content">
-                            <div class="card-title">{{f.name}}</div>
-                            {% if f.done == True%}
-                            <p>
-                                <label>
-                                    <input type="checkbox" class="filled-in", value="clicked", name="c{{f.id}}" checked="checked"/>
-                                    <span>Done Watching</span>
-                                </label>
-                            </p>
-                            {% else %}
-                            <p>
-                                <label>
-                                    <input type="checkbox" class="filled-in", value="clicked", name="c{{f.id}}" />
-                                    <span>Done Watching</span>
-                                </label>
-                            </p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </a>
+        {% for f in films %}    
+        <div class="col s12 m6">
+        <a href="{% url 'main:film' f.id %}">
+            <div class="card">
+                <div class="card-image">
+                    <img src={{f.poster}}  width="140" height="630">
+                    <button type="submit", name="c{{f.id}}", value="clicked"><a class="btn-floating halfway-fab waves-effect waves-light-blue darken-4"><i class="material-icons">check</i></a></button>
+                </div>  
             </div>
+        </a>
+        </div>
         {% endfor %}
-        <button type="submit", name="Save", value="Save"><a class="waves-effect waves-light btn red"><i class="material-icons left">check</i>Save Basket</a></button>
     </div>
     </form>
 {% endblock %}

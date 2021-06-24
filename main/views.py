@@ -5,9 +5,18 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import NewUserForm, CreateNewBasket
+import imdb
+import urllib.request
+import re
 # Create your views here.
 
+
+def film_info(request, id):
+    film = Film.objects.get(id=id)
+    return render(request, "main/film.html", {"Film":film})
+
 def search_results(request, id):
+    moviesDB = imdb.IMDb()
     if request.method=="POST":
         
         if request.POST.get("Add"):
@@ -15,16 +24,29 @@ def search_results(request, id):
             search_result = results[len(results) - 1 ]
             
             basket = Basket.objects.get(id=id)
-            basket.film_set.create(name=search_result.result)
+            basket.film_set.create(summary=search_result.result, poster=search_result.poster, url=search_result.url)
             Result.objects.all().delete()
             
-            return redirect("main:homepage")
+            return redirect("main:index", id=id)
         
         search = request.POST.get('search')
-        r = Result(result=search, Num=id)
+        
+        movies = moviesDB.search_movie(search)[0]
+        movie_id = movies.getID()
+        movie = moviesDB.get_movie(movie_id)
+
+        title = (movie["title"] + " " + str(movie["year"]) + " Trailer").replace(" ", "+")
+        html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + title)
+        results = re.findall(r"watch\?v=(\S{11})", html.read().decode())
+        url = "https://www.youtube.com/embed/" + results[0]
+
+        r = Result(result=movie.summary(), url=url, Num=id, poster=movie['full-size cover url'])
         r.save()
         
-        return render(request, "main/search_results.html", {"search":search, "id":id})
+        description = r.result
+        li = list(description.split("\n"))
+        
+        return render(request, "main/search_results.html", {"result":r, "id":id, "summary":li})
 
 def create(request):
     if request.method == "POST":
@@ -49,15 +71,15 @@ def index(request, id):
     if not request.user.is_anonymous:
         if baskets in request.user.basket.all():
             
-            if request.method=="POST":   
-                if request.POST.get("Save"):
-                    for i in films:
-                        if request.POST.get("c" + str(i.id)) == "clicked":
-                            i.done = True
-                        else:
-                            i.done = False
-                        i.save()
-                    return render(request, "main/basket.html", {"films":films , "id":id}) 
+            if request.method=="POST": 
+                for i in films:  
+                    if request.POST.get("c" + str(i.id)) == "clicked":
+                        i.delete()
+
+                baskets = Basket.objects.get(id=id)
+                films = baskets.film_set.all()
+                    
+                return render(request, "main/basket.html", {"films":films , "id":id}) 
 
             return render(request, "main/basket.html", {"films":films, "id":id})
 
