@@ -19,7 +19,7 @@ class Film(models.Model):
     poster = models.CharField(max_length=900)
     url = models.CharField(max_length=200)
     
-    BasketGenre = models.ForeignKey(Basket, default=1, verbose_name="basket", on_delete=models.SET_DEFAULT)
+    BasketGenre = models.ForeignKey(Basket, default=1, verbose_name="basket", on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name

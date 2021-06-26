@@ -13,7 +13,11 @@ import re
 
 def film_info(request, id):
     film = Film.objects.get(id=id)
-    return render(request, "main/film.html", {"Film":film})
+    
+    description = film.summary
+    li = list(description.split("\n"))
+    
+    return render(request, "main/film.html", {"Film":film, "summary":li[2:]})
 
 def search_results(request, id):
     moviesDB = imdb.IMDb()
@@ -46,7 +50,7 @@ def search_results(request, id):
         description = r.result
         li = list(description.split("\n"))
         
-        return render(request, "main/search_results.html", {"result":r, "id":id, "summary":li})
+        return render(request, "main/search_results.html", {"result":r, "id":id, "summary":li[2:]})
 
 def create(request):
     if request.method == "POST":
@@ -89,6 +93,12 @@ def index(request, id):
     
 
 def homepage(request):
+    
+    if request.method=="POST":
+        for b in request.user.basket.all():
+            if request.POST.get("c" + str(b.id)) == "clicked":
+                b.delete()
+
     return render(request, 
                   "main/baskets.html", 
                   {})

@@ -2,10 +2,18 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col s12, m8, l8">
-            <h3>{{film.name}}</h3>
-            <p style="font-size:70%">{{Film.date}}</p>
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="video-container">
+                <iframe width="853" height="480" src={{Film.url}} frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="card-content">
+            {% for s in summary %}
+                <ul>
+                    <li> {{s}} </li>
+                </ul>
+            {% endfor %}
+            </div>
         </div>
     </div>
 

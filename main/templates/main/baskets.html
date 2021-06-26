@@ -3,17 +3,23 @@
 {% block content %}
 
     <div class="row">
+    <form method="post" action="#">
+    {%csrf_token%}
         {% for b in user.basket.all  %}
             <div class="col s12 m6 l4">
                 <a href="{{b.id}}", style="color:#000">
                     <div class="card hoverable">
                         <div class="card-content">
-                            <div class="card-title">{{b.BasketGenre}}</div>
+                            <div class="card-title">{{b.BasketGenre}}</div>                          
                         </div>
+                            <button class="waves-effect waves-light btn-small" style = "background-color:blue; color:red" type="submit" name="c{{b.id}}" , value="clicked">
+                            <i class="material-icons middle " >clear</i>
+                            </button>
                     </div>
                 </a>
             </div>
         {% endfor %}
+    </form>
     </div>
-    <a href="/create", class="waves-effect waves-light btn red"><i class="material-icons left">add</i>Create Basket</a>
+    <a href="/create", class="waves-effect waves-light btn blue accent-4" style = "background-color:blue; color:red"><i class="material-icons left">add</i>Create Basket</a>
 {% endblock %}
