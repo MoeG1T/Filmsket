@@ -23,10 +23,10 @@
         {% for f in films %}    
         <div class="col s12 m6">
         <a href="{% url 'main:film' f.id %}">
-            <div class="card">
+            <div class="card hoverable">
                 <div class="card-image">
                     <img src={{f.poster}}  width="140" height="630">
-                    <button class="btn-floating halfway-fab waves-effect waves-light-blue darken-4" type="submit", name="c{{f.id}}", value="clicked"><i class="material-icons">check</i></button>
+                    <button class="btn-floating halfway-fab waves-effect waves-light-blue darken-4" type="submit", name="c{{f.id}}", value="clicked"><i class="material-icons purple-text text-accent-2">check</i></button>
                 </div>  
             </div>
         </a>

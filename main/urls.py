@@ -4,6 +4,7 @@ from . import views
 app_name = "main"
 
 urlpatterns = [
+    path("filmsket/", views.intro, name = "intro"),
     path("", views.homepage, name = "homepage"),
     path("register/", views.register, name = "register"),
     path("logout/", views.logout_request, name = "logout"),
@@ -12,4 +13,5 @@ urlpatterns = [
     path("create/", views.create, name="create"),
     path("<int:id>/search_results/", views.search_results, name='search_results'),
     path("<int:id>/film_info/", views.film_info, name='film'),
+    path("<int:id>/rename/", views.rename, name='rename'),
 ]

@@ -1,14 +1,14 @@
-<nav>
+<nav style="background-color:blue">
     <div class="nav-wrapper">
-        <a href="/" class="brand-logo ">Filmsket</span></a>
+        <a href="/" class="brand-logo purple-text text-accent-2">Filmsket</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/">Home</a></li>
+            <li><a class="purple-text text-accent-2" href="/">Home</a></li>
             {% if user.is_authenticated %}
-                <li><a>{{user.username}}</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a class="purple-text text-accent-2">{{user.username}}</a></li>
+                <li><a class="purple-text text-accent-2" href="/logout">Logout</a></li>
             {% else %}
-                <li><a href="/register">Register</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a class="purple-text text-accent-2" href="/register ">Register</a></li>
+                <li><a class="purple-text text-accent-2" href="/login">Login</a></li>
             {% endif %}
         </ul>
     </div>

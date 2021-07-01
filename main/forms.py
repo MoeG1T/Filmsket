@@ -19,3 +19,5 @@ class NewUserForm(UserCreationForm):
 class CreateNewBasket(forms.Form):
     name = forms.CharField(label="Basket Name", max_length=200)
 
+class RenameBasket(forms.Form):
+    new_name = forms.CharField(label="New Basket Name", max_length=200)

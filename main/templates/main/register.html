@@ -1,12 +1,13 @@
 {% extends "main/header.html" %}
 {% block content %}
-    <form method = "POST">
+    <form method="POST" class="purple-text text-accent-2">
         {%csrf_token%}
         {{form.as_p}}
 
-        <button class = "btn" style = "background-color:blue; color:red" type="submit">register</button>
+        <button class="btn purple-text text-accent-2" style="background-color:blue" type="submit">register</button>
     </form>
-
-    if you already have an account, <a href="/login"><strong>login</strong></a> instead.
+    
+    <a class="purple-text text-accent-2">if you already have an account, </a><a href="/login" class="red-text"><strong>login</strong></a><a class="purple-text text-accent-2"> instead.<a/>
+   
 {% endblock %}
       

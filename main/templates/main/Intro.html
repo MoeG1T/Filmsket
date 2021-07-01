@@ -1,0 +1,27 @@
+<head>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link href="{% static "main/css/materialize.css" %}" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body  class="deep-purple darken-4">
+
+
+{% include "main/includes/messages.html" %}
+    
+    <div class="container">
+        <a href="/"><h2  class="purple-text text-accent-2">Filmsket</h2></a>
+        <p style="font-size:160%;" class="purple-text text-accent-2">Utilizes IMDbPY to provide custom interactive To Watch Lists</P> 
+        <a href="/register" class="waves-effect waves-light btn-large purple-text text-accent-2" style="background-color:blue">Get Started</a>
+        <p style="font-size:160%;" class="purple-text text-accent-2">To create your own Film Baskets</P>     
+        <img src="{% static 'giphy.gif' %}" height="400" width="590">
+    </div>
+         
+</body>
+
+<style>
+    body{text-align: center;}
+</style>

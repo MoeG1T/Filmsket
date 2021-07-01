@@ -4,7 +4,7 @@ from .models import Film, Basket, Result
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from .forms import NewUserForm, CreateNewBasket
+from .forms import NewUserForm, CreateNewBasket, RenameBasket
 import imdb
 import urllib.request
 import re
@@ -53,21 +53,45 @@ def search_results(request, id):
         return render(request, "main/search_results.html", {"result":r, "id":id, "summary":li[2:]})
 
 def create(request):
-    if request.method == "POST":
-        form = CreateNewBasket(request.POST)
+    if not request.user.is_anonymous:
+        if request.method == "POST":
+            form = CreateNewBasket(request.POST)
 
-        if form.is_valid():
-            new_basket = form.cleaned_data["name"]
-            c = Basket(BasketGenre=new_basket)
-            c.save()
-            request.user.basket.add(c)
-            messages.success(request, f"New Film Basket Made: {new_basket}")
-            return redirect("main:homepage")
+            if form.is_valid():
+                new_basket = form.cleaned_data["name"]
+                c = Basket(BasketGenre=new_basket)
+                c.save()
+                request.user.basket.add(c)
+                messages.success(request, f"New Film Basket Made: {new_basket}")
+                return redirect("main:homepage")
     
-    form = CreateNewBasket()
-    return render(request, "main/create.html", {"form":form})
+        form = CreateNewBasket()
+        return render(request, "main/create.html", {"form":form})
+    
+    return redirect("main:homepage")
 
-    
+def rename(request, id):
+    basket = Basket.objects.get(id=id)
+    if not request.user.is_anonymous:
+        if basket in request.user.basket.all():
+            if request.method == "POST":
+                form = RenameBasket(request.POST)
+                    
+                if form.is_valid():
+                    name = form.cleaned_data["new_name"]
+                    basket = Basket.objects.get(id=id)
+                    basket.BasketGenre = name
+                    basket.save()
+                    messages.success(request, f"New Film Basket Name: {name}")
+                    return redirect("main:homepage")
+        
+            form = RenameBasket()
+            return render(request, "main/rename.html", {"form":form})
+        
+        return redirect("main:homepage")
+
+    return redirect("main:homepage")
+
 def index(request, id): 
     baskets = Basket.objects.get(id=id)
     films = baskets.film_set.all()
@@ -93,12 +117,27 @@ def index(request, id):
     
 
 def homepage(request):
-    
-    if request.method=="POST":
-        for b in request.user.basket.all():
-            if request.POST.get("c" + str(b.id)) == "clicked":
-                b.delete()
+    if not request.user.is_anonymous:
+        if request.method=="POST":
+            for b in request.user.basket.all():
+                if request.POST.get("c" + str(b.id)) == "clicked":
+                    b.delete()
+                    return redirect("main:homepage")
+        
+        return render(request, 
+                  "main/baskets.html", 
+                  {})
 
+    return render(request, 
+                  "main/Intro.html", 
+                  {})
+
+def intro(request):
+    if request.user.is_anonymous:
+        return render(request, 
+                  "main/Intro.html", 
+                  {})
+    
     return render(request, 
                   "main/baskets.html", 
                   {})

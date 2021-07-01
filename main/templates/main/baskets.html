@@ -8,18 +8,21 @@
         {% for b in user.basket.all  %}
             <div class="col s12 m6 l4">
                 <a href="{{b.id}}", style="color:#000">
-                    <div class="card hoverable">
+                    <div class="card hoverable" style="background-color:blue">
                         <div class="card-content">
-                            <div class="card-title">{{b.BasketGenre}}</div>                          
+                            <div class="card-title purple-text text-accent-2">{{b.BasketGenre}}</div>                          
                         </div>
-                            <button class="waves-effect waves-light btn-small" style = "background-color:blue; color:red" type="submit" name="c{{b.id}}" , value="clicked">
-                            <i class="material-icons middle " >clear</i>
+                            <button class="waves-effect waves-light btn-small purple accent-2" style="color:blue" type="submit" name="c{{b.id}}", value="clicked">
+                            <i class="material-icons middle">clear</i>
                             </button>
+                            <a href="{% url 'main:rename' b.id %}" class="waves-effect waves-light btn-small purple accent-2" style="color:blue">
+                            <i class="material-icons middle " >create</i>
+                            </a>
                     </div>
                 </a>
             </div>
         {% endfor %}
     </form>
     </div>
-    <a href="/create", class="waves-effect waves-light btn blue accent-4" style = "background-color:blue; color:red"><i class="material-icons left">add</i>Create Basket</a>
+    <a href="/create", class="waves-effect waves-light btn purple-text text-accent-2" style="background-color:blue"><i class="material-icons left">add</i>Create Basket</a>
 {% endblock %}
