@@ -71,8 +71,6 @@ soupsieve==2.2.1
 SQLAlchemy==1.4.18
 sqlparse==0.4.1
 toml==0.10.2
-Twisted==21.2.0
-twisted-iocpsupport==1.0.1
 typing-extensions==3.7.4.3
 ua-parser==0.10.0
 urllib3==1.26.4
