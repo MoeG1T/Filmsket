@@ -1,7 +1,7 @@
 <nav style="background-color:blue">
     <div class="nav-wrapper">
         <a href="/" class="brand-logo purple-text text-accent-2">Filmsket</span></a>
-        <a href="#" class="sidenav-trigger btn" data-target="mobile-links">
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
             <i class="material-icons">menu</i>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -27,14 +27,13 @@
         <li><a class="purple-text text-accent-2" href="/login">Login</a></li>
     {% endif %}
 </ul>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script> 
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, options);
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script> 
     $(document).ready(function(){
     $('.sidenav').sidenav();
