@@ -14,6 +14,14 @@
     {% include "main/includes/navbar.html" %}
 
     {% include "main/includes/messages.html" %}
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script> 
+        $(document).ready(function(){
+        $('.sidenav').sidenav();
+        });
+    </script>
 
     <div class="container">
         {% block content %}
