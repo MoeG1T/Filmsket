@@ -1,8 +1,6 @@
 <nav style="background-color:blue">
     <div class="nav-wrapper">
         <a href="/" class="brand-logo purple-text text-accent-2">Filmsket</span></a>
-            <i class="material-icons">menu</i>
-        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="purple-text text-accent-2" href="/">Home</a></li>
             {% if user.is_authenticated %}
@@ -27,6 +25,8 @@
     {% endif %}
 </ul>
 <a href="/" class="sidenav-trigger" data-target="mobile-links">
+    <i class="material-icons">menu</i>
+</a>
 
     
   
