@@ -7,8 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body  class="deep-purple darken-4" img="{% static 'background.jpg' %}">
-
+<body  class="deep-purple darken-4">
 
 {% include "main/includes/messages.html" %}
     
@@ -23,5 +22,8 @@
 </body>
 
 <style>
-    body{text-align: center;}
+    body{
+        text-align: center;
+        background-image: url("{% static 'giphy.gif' %}");
+        } 
 </style>
