@@ -17,10 +17,15 @@
     </div>
 </nav>
 
-<ul class="sidenav" id="mobile-links">
-     <li><a class="purple-text text-accent-2" href="/">Home</a></li>
+<ul class="sidenav" id="mobile-links" style="background-color:blue">
     {% if user.is_authenticated %}
-        <li><a class="purple-text text-accent-2">{{user.username}}</a></li>
+        <li><div class="user-view">
+            <div class="background">
+                <img src="{% static 'background.jpg' %}">
+            </div>
+        <span class="purple-text text-accent-2 name">{{user.username}}</span>
+        <span class="purple-text text-accent-2 email">{{user.email}}</span></a>
+        </div></li>
         <li><a class="purple-text text-accent-2" href="/logout">Logout</a></li>
     {% else %}
         <li><a class="purple-text text-accent-2" href="/register ">Register</a></li>
