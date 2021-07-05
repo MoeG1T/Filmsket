@@ -21,6 +21,7 @@
     {% if user.is_authenticated %}
         <li><div class="user-view">
             <div class="background">
+                {% load static %}
                 <img src="{% static 'background.jpg' %}">
             </div>
         <span class="purple-text text-accent-2 name">{{user.username}}</span>
