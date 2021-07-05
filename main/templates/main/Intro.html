@@ -1,5 +1,5 @@
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <!-- Compiled and minified CSS -->
     <link href="{% static "main/css/materialize.css" %}" rel="stylesheet">
@@ -13,10 +13,16 @@
 {% include "main/includes/messages.html" %}
     
     <div class="container">
-        <a href="/"><h2  class="blue-text text-accent-4">Filmsket</h2></a>
-        <p style="font-size:160%;" class="blue-text text-accent-4">Utilizes <a href="https://imdbpy.readthedocs.io/en/latest/" class="blue-text text-accent-4"><strong>IMDbPY</strong></a> to provide custom interactive To Watch Lists</P> 
-        <a href="/register" class="waves-effect waves-light btn-large purple-text text-accent-2" style="background-color:blue">Get Started</a>
-        <p style="font-size:160%;" class="blue-text text-accent-4">To create your own Film Baskets</P>     
+    <div class="col s12 m6">
+      <div class="card deep-purple darken-4">
+        <div class="card-content white-text">
+          <span class="card-title"><a href="/"><h2  class="purple-text text-accent-2">Filmsket</h2></a></span>
+          <p style="font-size:160%;" class="purple-text text-accent-2">Utilizes <a href="https://imdbpy.readthedocs.io/en/latest/" class="blue-text text-accent-4">IMDbPY</a> to provide custom interactive To Watch Lists</P> 
+          <a href="/register" class="waves-effect waves-light btn-large purple-text text-accent-2" style="background-color:blue">Get Started</a>
+          <p style="font-size:160%;" class="purple-text text-accent-2">To create your own Film Baskets</P>
+        </div>
+      </div>
+    </div>
         <img src="{% static 'giphy.gif' %}" height="400" width="590">
     </div>
          
@@ -25,11 +31,12 @@
 <style>
     body{
         text-align: center;
-
-        background-image: url("{% static 'background.jpg' %}");;
+        background-image: url("{% static 'background.jpg' %}");
 
         height: 100%;
 
-        background-position: center;
+        background-size: cover;
         } 
 </style>
+
+
