@@ -25,7 +25,7 @@
         <a href="{% url 'main:film' f.id %}">
             <div class="card hoverable">
                 <div class="card-image">
-                    <img src={{f.poster}}  width="140" height="630">
+                    <img src={{f.poster}}  width="140" height="650">
                     <button class="btn-floating halfway-fab waves-effect waves-light-blue darken-4" type="submit", name="c{{f.id}}", value="clicked"><i class="material-icons purple-text text-accent-2">check</i></button>
                 </div>  
             </div>
@@ -34,4 +34,5 @@
         {% endfor %}
     </div>
     </form>
+
 {% endblock %}

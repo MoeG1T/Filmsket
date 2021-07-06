@@ -3,14 +3,14 @@
 {% block content %}
 
     <div class="col s12 m6">
-        <div class="card">
+        <div class="card purple-text text-accent-2" style="background-color:blue">
             <div class="video-container">
                 <iframe width="853" height="480" src={{Film.url}} frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="card-content">
             {% for s in summary %}
                 <ul>
-                    <li> {{s}} </li>
+                    <li>{{s}} </li>
                 </ul>
             {% endfor %}
             </div>
