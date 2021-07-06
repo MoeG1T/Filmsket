@@ -20,10 +20,10 @@
     <div class="row">
     <form method="post" action="#">
     {%csrf_token%}
-        <ul> 
+
         {% for f in films %}
    
-        <li>
+
         <div class="col s12 m6">
         <a href="{% url 'main:film' f.id %}">
             <div class="card hoverable">
@@ -34,9 +34,8 @@
             </div>
         </a>
         </div>
-        </li>
         {% endfor %}
-        </ul>
+
     </div>
     </form>
 
