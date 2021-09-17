@@ -6276,6 +6276,12 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
+.poster {
+  
 
+  height:500px;
+  width:200px;
+    
+}
 
 /*# sourceMappingURL=materialize.css.map */
