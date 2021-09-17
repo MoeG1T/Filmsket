@@ -6284,8 +6284,8 @@ input[type=range]::-ms-thumb {
 }
 @media (orientation: landscape){
   .poster { 
-    height:750px;
-    width:70%;
+    height:700px;
+    width:150px;
    }
   }
 /*# sourceMappingURL=materialize.css.map */
