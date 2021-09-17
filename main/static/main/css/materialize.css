@@ -6276,12 +6276,16 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
-.poster {
-  
-
+@media (orientation: portrait){
+.poster { 
   height:500px;
   width:100px;
-    
+ }
 }
-
+@media (orientation: landscape){
+  .poster { 
+    height:750px;
+    width:200px;
+   }
+  }
 /*# sourceMappingURL=materialize.css.map */
