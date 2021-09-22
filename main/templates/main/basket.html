@@ -17,27 +17,25 @@
     </nav>
     </p>
     
-    <p>
-        <div class="row">
+    <div class="row">
         <form method="post" action="#">
         {%csrf_token%}
 
             {% for f in films %}
-    
-
-            <div class="col s12 m6">
-            <a href="{% url 'main:film' f.id %}">
-                <div class="card hoverable">
-                    <div class="card-image">
-                        <img class="poster" src={{f.poster}}>
-                        <button class="btn-floating halfway-fab waves-effect waves-light-blue darken-4" type="submit", name="c{{f.id}}", value="clicked"><i class="material-icons purple-text text-accent-2">check</i></button>
-                    </div>  
+            <p>
+                <div class="col s12 m6">
+                <a href="{% url 'main:film' f.id %}">
+                    <div class="card hoverable">
+                        <div class="card-image">
+                            <img class="poster" src={{f.poster}}>
+                            <button class="btn-floating halfway-fab waves-effect waves-light-blue darken-4" type="submit", name="c{{f.id}}", value="clicked"><i class="material-icons purple-text text-accent-2">check</i></button>
+                        </div>  
+                    </div>
+                </a>
                 </div>
-            </a>
-            </div>
+            </p>
             {% endfor %}
-        </div>
         </form>
-    </p>
+    </div>
 
 {% endblock %}
