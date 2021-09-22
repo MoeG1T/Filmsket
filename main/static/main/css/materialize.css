@@ -6284,7 +6284,7 @@ input[type=range]::-ms-thumb {
 }
 @media (orientation: landscape){
   .poster { 
-    height:750px;
+    height:800px;
     width:150px;
    }
   }
@@ -6293,7 +6293,8 @@ input[type=range]::-ms-thumb {
   and (min-device-width: 1200px) 
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) { 
+  and (min-resolution: 192dpi) 
+  and (orientation: landscape){ 
 
     .poster { 
       height:600px;
