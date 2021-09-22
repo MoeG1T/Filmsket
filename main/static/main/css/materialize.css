@@ -6289,7 +6289,7 @@ input[type=range]::-ms-thumb {
    }
   }
   
-  @media (min-width:961px)  {
+  @media (max-width:961px)  {
     .poster { 
       height:600px;
       width:150px;
