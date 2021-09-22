@@ -6293,7 +6293,7 @@ input[type=range]::-ms-thumb {
 
 @media (orientation: landscape) and (min-width:2000px){
   .poster { 
-    height:755px;
+    height:725px;
     width:150px;
    }
   }
