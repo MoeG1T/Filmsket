@@ -6276,12 +6276,21 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
+
+    @media (max-width:1366px)  {
+      .poster { 
+        height:600px;
+        width:150px;
+       }
+  }
+
 @media (orientation: portrait){
 .poster { 
   height:500px;
   width:100px;
  }
 }
+
 @media (orientation: landscape) and (min-width:1025px){
   .poster { 
     height:800px;
@@ -6289,10 +6298,5 @@ input[type=range]::-ms-thumb {
    }
   }
   
-  @media (max-width:1025px)  {
-    .poster { 
-      height:600px;
-      width:150px;
-     }
-}
+ 
 /*# sourceMappingURL=materialize.css.map */
