@@ -22,7 +22,6 @@
         {%csrf_token%}
 
             {% for f in films %}
-            <p>
                 <div class="col s12 m6">
                 <a href="{% url 'main:film' f.id %}">
                     <div class="card hoverable">
@@ -33,7 +32,6 @@
                     </div>
                 </a>
                 </div>
-            </p>
             {% endfor %}
         </form>
     </div>
