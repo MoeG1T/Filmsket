@@ -6277,7 +6277,7 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem; } }
 
 
-@media (orientation: landscape) and (max-width:3000px) {
+@media (orientation: landscape) and (max-width:1600px) {
       .poster { 
         height:600px;
         width:150px;
