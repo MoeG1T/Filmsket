@@ -6279,7 +6279,7 @@ input[type=range]::-ms-thumb {
 
 @media (orientation: landscape) and (max-width:1600px) {
       .poster { 
-        height:600px;
+        height:650px;
         width:150px;
        }
   }
@@ -6293,7 +6293,7 @@ input[type=range]::-ms-thumb {
 
 @media (orientation: landscape) and (min-width:2000px){
   .poster { 
-    height:800px;
+    height:755px;
     width:150px;
    }
   }
