@@ -6284,11 +6284,11 @@ input[type=range]::-ms-thumb {
 }
 @media (orientation: landscape){
   .poster { 
-    height:750px;
+    height:700px;
     width:150px;
    }
   }
-@media (orientation: landscape) and (max-width:1025px) { 
+@media (orientation: landscape) and (min-width:1025px) { 
   .poster { 
     height:650px;
     width:150px;
