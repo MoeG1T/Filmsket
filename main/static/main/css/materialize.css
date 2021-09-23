@@ -6277,10 +6277,10 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem; } }
 
 
-@media (orientation: landscape) and (max-width:2000px) {
+@media (orientation: landscape) and (max-width:1600px) {
       .poster { 
         height:650px;
-        width:100px;
+        width:150px;
        }
   }
 
@@ -6291,6 +6291,12 @@ input[type=range]::-ms-thumb {
  }
 }
 
+@media (orientation: landscape) and (max-width:1900px){
+  .poster { 
+    height:700px;
+    width:150px;
+   }
+  }
   
  
 /*# sourceMappingURL=materialize.css.map */
